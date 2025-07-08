@@ -1,0 +1,21 @@
+<div>
+  @if (product(); as p) {
+  <div class="mb-2">
+    <p-image [src]="p.image" [alt]="p.image" width="250" />
+  </div>
+  <div class="item-informations">
+    <div class="mb-2">
+      <span class="text-lg font-medium text-900 mt-2">{{ p.name }}</span>
+      -
+      <span class="text-base text-secondary mt-2">{{ p.category }}</span>
+    </div>
+    <p-rating [(ngModel)]="p.rating" [cancel]="false" [readonly]="true" />
+    <div class="text-base text-900 mt-2 ml-2 font-italic">
+      {{ p.description }}
+    </div>
+    <div class="text-2xl font-medium text-900 mt-2">
+      {{ p.price }} {{ p.price ? "€" : "" }}
+    </div>
+  </div>
+}
+</div>

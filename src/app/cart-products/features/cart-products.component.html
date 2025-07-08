@@ -1,0 +1,26 @@
+<p-dialog
+  header="Panier"
+  [modal]="true"
+  [visible]="visible()"
+  [style]="{ width: '40rem' }"
+  position="topright"
+  (visibleChange)="closeModal()"
+>
+  <p-dataView #dv [value]="cartProducts()" emptyMessage="Le panier est vide.">
+    <ng-template pTemplate="list" let-products>
+      @for (product of cartProducts(); track product) {
+      <p-card class="block mb-2">
+        <app-product-item [product]="product"></app-product-item>
+
+        <ng-template pTemplate="footer">
+            <p-button
+            label="Supprimer"
+            severity="danger"
+            (onClick)="onDelete(product)"
+          />
+        </ng-template>
+      </p-card>
+      }
+    </ng-template>
+  </p-dataView>
+</p-dialog>
